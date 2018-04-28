@@ -1,0 +1,129 @@
+<!-- <div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Edit Forms</h1>
+    </div>  
+</div> -->
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Invitation Cards
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form role="form" ng-controller="InviEditCtrl" ng-submit="updateProfile('update/invitation_card','POST')">
+                    <div class="col-lg-8">
+                           <!--  <div class="form-group">
+                                <label>Marketing Office</label>
+                                
+                                <select class="form-control" ng-model="userData.marketing_office" ng-options="i.id as i.marketing_office_name for i in cmp_dropdown">
+                                    <option value="">Select Marketing Office</option>
+                                     
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sales Executive</label>
+                                <select class="form-control" ng-model="userData.sales_executive" ng-options="i.id as i.name for i in sales_dropdown">
+                                    <option value="">Select Sales Executive</option>
+                                     
+                                </select>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Select Category</label>
+                                <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                                    <li ng-repeat="item in dropdown">        
+                                        <span id="menu-{{item.id}}" ng-class="userData.parent_id == item.id ? 'selected_menu' : 'title'" ng-click="setParentID(item.id)">{{item.name}}</span>
+                                        <ul ng-if="item.sub_cat && item.sub_cat.length > 0" class="sub-menu">
+                                            <li ng-repeat="item in item.sub_cat">
+                                                <span ng-class="userData.parent_id == item.id ? 'selected_menu' : 'title'" ng-click="setParentID(item.id)">{{item.name}}</span>
+                                                 <div ng-switch on="item.sub_cat.length > 0">
+                                                    <div ng-switch-when="true">
+                                                      <div ng-init="subItems = item.sub_cat;" ng-include="'newpartial.html'"></div>  
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Parent Id</label>
+                                    <select class="form-control" ng-model="userData.parent_id" ng-options="i.id as i.name for i in dropdown">
+                                        
+                                        <option value="">Category</option>
+                                    </select>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input class="form-control" name="name" placeholder="Name" ng-model="userData.name">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <div simditor ng-model="userData.description"></div>
+                               <!-- <textarea placeholder="Default textarea" name="description" id="description" class="form-control editor" cols="5" rows="5" ng-model="userData.description"></textarea> -->
+                            </div>
+                            {{tags}}
+                            <tags-input ng-model="tags" add-on-paste="true" display-property="name">
+                              <auto-complete source="loadTags($query)"></auto-complete>
+                            </tags-input>
+                            
+                            <div class="form-group">
+                                <div class="col-lg-12" ng-repeat="input in inputs">
+                                
+                                    <div class="col-lg-2" ng-init="idx=$index">
+                                        <input class="form-control" name="name" placeholder="Product Id" id="attribute[$index]['product_id']" ng-model="attributeset[idx].product_id">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" name="name" placeholder="Youtube Link" id="attribute[$index]['video_link']" ng-model="attributeset[idx].video_link">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <select class="form-control" ng-model="attributeset[idx].form_id" id="attribute[$index]['form_id']" ng-options="i.id as i.title for i in formdropdown">
+                                            <!-- <option value="">Parent Id</option> -->
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <input class="form-control" name="name" placeholder="Price" id="attribute[$index]['price']" ng-model="attributeset[idx].price">
+                                    </div>  
+                                    
+                                    <div class="col-lg-2" ng-repeat="attribute in tags">
+                                        <input class="form-control" name="name" placeholder="{{attribute.name}}" id=attribute[$index][attribute.id] ng-model="attributeset[idx].attribute[attribute.id]">
+                                    </div>
+                                    <button class="btn btn-primary"  ng-if="$index == inputs.length - 1" ng-click="addInput()" style="background-color: #54b733;border: 1px solid #54b733;">
+                                    Add More
+                                    </button>
+                                    <button class="btn btn-primary" ng-if="$index != inputs.length - 1" ng-click="removeInput($index)" style="background-color: #d43b3b;border: 1px solid #d43b3b;">
+                                    Remove
+                                </button>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Video URL</label>
+                                <input class="form-control" type="text" name="photo" ng-model="userData.video_url" >
+                            </div> -->
+                            <div class="form-group">
+                                <label>Personlization Charges</label>
+                                <input class="form-control" name="name" placeholder="Price" id="attribute[$index]['price']" ng-model="userData.personalized">
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" ng-model="userData.status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                             <button type="reset" class="btn btn-primary pull-right">Reset</button>
+                        <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                        </div>
+                       
+                    </form>
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

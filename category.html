@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><!-- Mobile Specific Metas -->
+    
+    <!-- Title -->
+    <title>Green n Personal - It's Fast, It's Easy</title>
+    
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="images/Favicon.ico">
+    
+    <!-- CSS Stylesheet -->
+    <link href="css/bootstrap.css" rel="stylesheet"><!-- bootstrap css -->
+    <link href="css/owl.carousel.css" rel="stylesheet"><!-- carousel Slider -->
+    <link href="css/styles.css" rel="stylesheet" /><!-- font css --> 
+    <link href="css/datepicker.css" rel="stylesheet" /><!-- Date picker css -->
+    <link href="css/loader.css" rel="stylesheet"><!-- Loader Box css -->
+    <link href="css/docs.css" rel="stylesheet"><!--  template structure css -->
+    <script src="js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/app.js"></script>
+    <!-- Used Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Domine:400,700%7COpen+Sans:300,300i,400,400i,600,600i,700,700i%7CRoboto:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+    
+<body ng-app="myApp" ng-controller="categoryCtrl">
+    <div class="page">
+        <div id="loader-wrapper">
+            <div id="loader"><img src="images/loader.gif" alt=""></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+
+        
+            <div header></div>
+
+            <section class="content" style="background-color: #e8e8e8;">
+                <div class="breadcrumb">
+                    <div class="container">
+                        <ul>
+                            <li><a href="#">Home</a>/</li>
+                            <li ng-repeat="bread in breadcrumb"> <a href="{{bread.href}}">{{bread.link}}</a></li>
+                            <!-- <li><a href="#">Wedding Planning</a>/</li>
+                            <li class="active"><a href="#">Germany - Berlin / East</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="venues-view">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                <div class="right-side">
+                                    <div class="venues-slide first" ng-repeat="item in items.category">
+                                        <div class="img"><img src="images/property-img/venues-img.jpg" alt=""></div>
+                                        <div class="text">
+                                            <h3>{{item.name}}</h3>
+                                            <div class="address">{{item.description}}</div>
+                                            <div class="reviews">3.5 <div class="star"><div class="fill" style="width:70%;"></div></div>reviews</div>
+                                            <div class="outher-info">
+                                                <div class="info-slide first">
+                                                    <label>Seating Capacity</label>
+                                                    <span>20 - 160</span>
+                                                </div>
+                                                <div class="info-slide">
+                                                    <label>Price Range</label>
+                                                    <span>$ 1000 <small>(Onwards)</small></span>
+                                                </div>
+                                                <div class="info-slide">
+                                                    <label>Hotel Star Rating</label>
+                                                    <div class="star">
+                                                        <div class="fill" style="width:61%;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="info-slide">
+                                                    <label>Min. Booking Amount</label>
+                                                    <span>$ 5000 <small>(onwards)</small></span>
+                                                </div>
+                                                <div class="venues-link">
+                                                    <a href="#">4 Venues</a>
+                                                </div>
+                                            </div>
+                                            <div class="outher-link">
+                                                <ul>
+                                                    <li><a href="#"><span class="icon icon-calander-check"></span>Check Availability</a></li>
+                                                    <li><a href="javascript:;" data-toggle="modal" data-target="#contactModal1"><span class="icon icon-phone"></span>Contact Vendor</a></li>
+                                                    <li><a href="#"><span class="icon icon-heart"></span>Add to Wishlist</a></li>
+                                                    <li><a href="#"><span class="icon icon-location-1"></span>See on Map</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="button">
+                                                <a href="./card.html#?id={{item.id}}" class="btn">Personaliz Card</a>
+                                                <a href="#/services" class="btn gray">View Details <span class="icon icon-arrow-down"></span></a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    <!-- <div class="pagination">
+                                        <ul>
+                                            <li class="prev disabled"><a href="#">Prev</a></li>
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li class="next"><a href="#">Next</a></li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+     <footer id="footer">
+            
+        </footer>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.js"></script>
+    <script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script>
+    <script type="text/javascript" src="js/jquery.form-validator.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+    <script type="text/javascript" src="js/coustem.js"></script>
+</body>
+</html>
+

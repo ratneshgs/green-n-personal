@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><!-- Mobile Specific Metas -->
+    
+    <!-- Title -->
+    <title>Green n Personal - It's Fast, It's Easy</title>
+    
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="images/Favicon.ico">
+    
+    <!-- CSS Stylesheet -->
+    <link href="css/bootstrap.css" rel="stylesheet"><!-- bootstrap css -->
+    <link href="css/owl.carousel.css" rel="stylesheet"><!-- carousel Slider -->
+    <link href="css/styles.css" rel="stylesheet" /><!-- font css --> 
+    <link href="css/docs.css" rel="stylesheet"><!--  template structure css -->
+      <script src="js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/app.js"></script>
+    <!-- Used Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Domine:400,700%7COpen+Sans:300,300i,400,400i,600,600i,700,700i%7CRoboto:400,500" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="inner-page" ng-app="myApp" ng-controller="accountCtrl">
+    <div class="page">
+        <div header></div>
+        <div class="dashboard-banner">
+            <div class="container">
+                <h2>My Dashboard</h2>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">Home</a>/</li>
+                        <li class="active"><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="my-account">
+                    <div class="account-tab">
+                        <ul>
+                            <li><a href="javascript:void(0);" id="profile">Profile</a></li>
+                            <li class="active"><a href="javascript:void(0);" id="order">Order</a></li>
+                            <li><a href="javascript:void(0);" id="changePassword">Change Password</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content profile-con">
+                        <div class="personal-edit">
+                            <a href="#"><span class="icon icon-pencile"></span>Edit Profile</a>
+                        </div>
+                        <div class="personal-information">
+
+                            <div class="info-slide">
+                                <p><span>Name :</span>{{user_data.first_name}}</p>
+                            </div>
+                            <div class="info-slide">
+                                <p><span>Email ID :</span>{{user_data.email}}</p>
+                            </div>
+                            <div class="info-slide">
+                                <p><span>Mobile Number :</span>{{user_data.phone}}</p>
+                            </div>
+                            <div class="info-slide">
+                                <p><span>Date Of Birth :</span>{{user_data.dob}}</p>
+                            </div>
+                            <div class="info-slide">
+                                <p><span>Gender :</span>{{user_data.gender}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content order-con open">
+                        <table class="booking-viewTable">
+                            <tr>
+                                <th>Order ID</th>
+                                <th class="detail">Product Details</th>
+                                <th>Order Date</th>
+                                <th>Paid Amount</th>
+                                <th>Invoice</th>
+                                <th>Order Status</th>
+                            </tr>
+                            <tr ng-repeat="ord in orderitems">
+                                <td><span class="small-heading">Order ID</span>{{ord.id}}</td>
+                                <td class="detail">
+                                    <span class="small-heading">Product Details</span>
+                                    <!-- <div class="detailTd">
+                                        <label>Hiraba Farm</label>
+                                        <p>Behind Shalby Hospital, Garden Road, Prahlad Nagar , Ahmedabad-380015</p>
+                                        <a href="#">Phone : +91-79-12345678</a>
+                                    </div> -->
+                                    {{ord.product_name}}
+                                    <br />
+                                    <div ng-if="ord.payment_made == 0"><span class="small-heading"></span> <a href="https://drive.google.com/drive/u/0/folders/{{ord.folder_id}}" target="_blank">View Folder</a>
+                                </td>
+                                <td>{{ord.order_date | date:"d MMMM yyyy 'at' h:mma"}}</td>
+                                <td>{{ord.order_total}}</td>
+                                <td><a href="./uploads/{{ord.id}}.pdf" class="fa fa-file-pdf-o"></a></td>
+                                <td>
+                                    
+
+                                    <div ng-if="ord.video_uploaded == 1"><span class="small-heading"></span> <a href="https://drive.google.com/drive/u/0/folders/{{ord.folder_id}}" target="_blank">View Video</a> <br>
+                                    <a href="./edit-order.html#?card_id={{ord.product_id}}&form_id={{ord.card_id}}&order_id={{ord.order_id}}"  ng-if="ord.video_accepted == 0" style="text-decoration: underline;padding:5px">Edit Form</a>
+                                    <a data-toggle="modal" data-target="#editrequestModal" ng-if="ord.video_accepted == 0" style="cursor: pointer;text-decoration: underline;padding:5px">Customer Service</a>
+
+                                    <a style="cursor: pointer;text-decoration: underline;padding:5px" ng-click="accept(ord.order_id)" ng-if="ord.video_accepted == 0">Accept</a>
+                                    </div>
+                                    
+                                    <div ng-if="ord.current_stage == 3">
+                                        <br />
+                                        <span class="small-heading">No. of Guests</span> For Personlize Detail <a href="https://docs.google.com/spreadsheets/d/{{ord.personlized_sheet_id}}/edit#gid=0">Click Here</a>
+                                    </div>
+                                    <div ng-if="ord.video_uploaded == 0 && ord.current_stage == 2">
+                                        Waiting for video
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+<!--                         <div class="booking-status">
+                            <div class="status">Status :<span> Pending</span></div>
+                        </div> -->
+                    </div>
+                    <div class="tab-content changePassword-con">
+                        <div class="change-password ">
+                            <div class="input-box">
+                                <input type="text" placeholder="Current Password">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" placeholder="New Password">
+                            </div>
+                            <div class="input-box">
+                                <input type="text" placeholder="Confirm Password">
+                            </div>
+                            <div class="submit-box">
+                                <input type="submit" value="Save" class="btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="functionality-view">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="functionality-box">
+                                <div class="iconBox"><div class="icon icon-lead-management"></div></div>
+                                <h3>Lead Management</h3>
+                                <p>Increase occupancy, automate the lead management process, grow your  customer relationships, match sales-ready leads to the appropriate sales people.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="functionality-box">
+                                <div class="iconBox"><div class="icon icon-sales"></div></div>
+                                <h3>Sales</h3>
+                                <p>Track sales opportunities, manage the sales process and generate proposals. Built-in process provides an aggregate view of account activity from the past, present and future.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="functionality-box">
+                                <div class="iconBox"><div class="icon icon-booking"></div></div>
+                                <h3>Booking</h3>
+                                <p>Manage calendars , share availability, easily view events color-coded by status, type or location. Book and manage multiple spaces, venues, and sites all from one master calendar.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="functionality-box">
+                                <div class="iconBox"><div class="icon icon-operations"></div></div>
+                                <h3>Operations</h3>
+                                <p>Assign resources and review stock alerts. Create detailed reports, work orders, and generate invoices. Receive alerts on changes as they take place.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div footer></div>
+        </footer>
+    </div>
+    <!-- Bootstrap core JavaScript
+        ================================================== --> 
+    <!-- Placed at the end of the document so the pages load faster --> 
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script> 
+    <script type="text/javascript" src="js/bootstrap.js"></script> 
+    <script type="text/javascript" src="js/jquery.form-validator.min.js"></script>
+	<script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script>
+    <script type="text/javascript" src="js/coustem.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta information -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><!-- Mobile Specific Metas -->
+    
+    <!-- Title -->
+    <title>Green n Personal - It's Fast, It's Easy</title>
+    
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="images/Favicon.ico">
+    
+    <!-- CSS Stylesheet -->
+    <link href="css/bootstrap.css" rel="stylesheet"><!-- bootstrap css -->
+    <link href="css/owl.carousel.css" rel="stylesheet"><!-- carousel Slider -->
+    <link href="css/styles.css" rel="stylesheet" /><!-- font css --> 
+    <link href="css/datepicker.css" rel="stylesheet" /><!-- Date picker css -->
+    <link href="css/loader.css" rel="stylesheet"><!-- Loader Box css -->
+    <link href="css/docs.css" rel="stylesheet"><!--  template structure css -->
+    <script src="js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/app.js"></script>
+    <!-- Used Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Domine:400,700%7COpen+Sans:300,300i,400,400i,600,600i,700,700i%7CRoboto:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+    
+<body ng-app="myApp" ng-controller="homeCtrl">
+    <div class="page">
+        <div id="loader-wrapper">
+            <div id="loader"><img src="images/loader.gif" alt=""></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+
+        
+            <div header></div>
+        <section class="contackForm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Customize Card</h2>
+                    </div>
+                    <form role="form" ng-controller="formsubmitCtrl" ng-submit="submitForm('master/add/designer', 'POST')">
+                        <div class="col-sm-6">
+                            <div class="input-box">
+                                <label>Your Name <sup>*</sup></label>
+                                <input type="text" data-validation="required" ng-model="loginData.name" data-validation-error-msg="Name cannot be blank." name="name">
+                            </div>
+                            <div class="input-box">
+                                <label>Your Mobile Number <sup>*</sup></label>
+                                <input type="text" data-validation="required" ng-model="loginData.phone" data-validation-error-msg="Incorrect e-mail address" name="phone">
+                            </div>
+                            <div class="input-box">
+                                <label>Your Email <sup>*</sup></label>
+                                <input type="text" data-validation="email" ng-model="loginData.email" data-validation-error-msg="Incorrect e-mail address" name="email">
+                            </div>
+                            <div class="input-box">
+                                <label>Description <sup>*</sup></label>
+                                <textarea data-validation="required" ng-model="loginData.subject"  data-validation-error-msg="Subject cannot be blank." name="subject"></textarea>
+                            </div>
+                            <input type="submit" class="btn" value="Submit">
+                        </div>
+                        <div class="col-sm-6">
+                        <h2>How it Works</h2>
+                        <p>Customized videos are a great way to communicate personalized content with personal brand and style. We can create customize personal videos or personalize your pre-made videos.</p>
+                        <p> For power users, we can setup customized APIs for your specific personalized video templates. Once the template is finalized our state of the art infrastructure allows us to serve template based personalized videos in under 15 seconds.</p>
+                        <p>Whether you want a single video or a large volume of videos we are here to help. Please provide your details and a member or our team will contact you.</p>
+                        <p>We provide following services:<br>
+                            <ul class="policy-block">
+                                <li>Personalized business marketing video</li>
+                                <li>Personalized product marketing video</li>
+                                <li>Personalize your pre-made video</li>
+                                <li>Personalized custom Invitations</li>
+                                <li>Personalized custom greetings</li>
+                            </ul>
+                        </p>
+                        <p>Serving time depends on the duration and size of the video.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            <div footer></div>
+        </footer>
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.js"></script>
+    <script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script>
+    <script type="text/javascript" src="js/jquery.form-validator.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="js/placeholder.js"></script>
+    <script type="text/javascript" src="js/coustem.js"></script>
+</body>
+</html>
+
+   

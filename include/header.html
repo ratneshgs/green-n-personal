@@ -1,0 +1,204 @@
+<header id="header">
+    <div class="quck-link" ng-controller="headerCtrl">
+        <div class="container">
+            <!-- <div class="mail"><a href="MailTo:info@eventplanning.com"><span class="icon icon-envelope"></span>support@green-n-personal.com</a></div> -->
+            
+            <div class="right-link" ng-if="!isLogin">
+                <ul>
+                    <!-- <li><a href="register.html"><span class="icon icon-multi-user"></span>Become a Vendor</a></li>
+                    <li><a href="#"><span class="icon icon-invite-friend"></span>Invite Friends</a></li> -->
+                    <li class="registration"><a data-toggle="modal" data-target="#registrationModal">Registration</a></li>
+                    <li><a data-toggle="modal" data-target="#loginModal">Login</a></li>
+                </ul>
+            </div>
+            <div class="right-link" ng-if="isLogin">
+                <ul>
+                    <!-- <li><a href="register.html"><span class="icon icon-multi-user"></span>Become a Vendor</a></li>
+                    <li><a href="#"><span class="icon icon-invite-friend"></span>Invite Friends</a></li> -->
+                    <li><a href="./myaccount.html">My Account</a></li>    
+                    <li><a href="javascript:void(0)" ng-click="dologout()">Logout</a></li>
+                </ul>
+            </div>
+        </div>    
+    </div>
+    <nav id="nav-main">
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand"><img src="images/logo.png" alt=""></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon1-barMenu"></span>
+                        <span class="icon1-barMenu"></span>
+                        <span class="icon1-barMenu"></span>
+                    </button>
+                    
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="single-col active">
+                        	<a href="index.html">Home <!-- <span class="icon icon-arrow-down"></span> --></a>
+                        </li>
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li class="single-col">
+                            <a href="#">Services <span class="icon icon-arrow-down"></span></a>
+                            <ul>
+                                <li><a href="./category.html?id=27">Greetings</a></li>
+                                <li><a href="./category.html?id=33">Invitations</a></li>
+                                <li><a href="./designer.html">Customize Card</a></li>
+                                <li><a href="./category.html?id=48">Personalized Marketing</a></li>
+                            </ul>
+                        </li>
+                        <li class="single-col">
+                            <a href="#">How it Works <span class="icon icon-arrow-down"></span></a>
+                            <ul>
+                                <li><a href="greetings-how-it-works.html">Greetings and Invitations</a></li>
+                                <li><a href="customized-how-it-works.html">Customized Video</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                    <div class="search-box">
+                        <div class="search-icon"><span class="icon icon-search"></span></div>
+                        <div class="search-view">
+                            <div class="input-box">
+                                <form>
+                                    <input type="text" placeholder="Search here">
+                                    <input type="submit" value="" >
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+        <!-- Login Alert Model -->
+        <div class="modal modal-vcenter fade" id="alertModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog login-popup" role="document" style="width: 240px;
+    top: 25%;">
+                <div class="modal-content">
+                    
+                   <div style="padding: 20px; color: #000"> Please do login to create your own personlized card</div>
+                    <button class="btn" aria-label="Close" data-dismiss="modal" style="border-radius: 0; line-height: 15px; width: 100%">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Request Model -->
+        <div class="modal modal-vcenter fade" id="editrequestModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog login-popup" role="document">
+                <div class="modal-content">
+                    <div class="close-icon" aria-label="Close" data-dismiss="modal" ><img src="images/close-icon.png" alt=""></div>
+                    
+                    <div class="col-sm-12">
+                        <p>Enter your query in below box if you have issue or want some changes in video.</p>
+                        <form ng-submit="dologin(this)">
+                            <div class="input-form">
+                                <div class="input-box">
+                                    <textarea class="form-control" required name="message" ng-model="request.message" placeholder=""></textarea>
+                                </div>
+                                <div class="submit-slide">
+                                    <input type="button" value="Submit" class="btn">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Login Popup Model -->
+        <div class="modal modal-vcenter fade" id="loginModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog login-popup" role="document">
+                <div class="modal-content">
+                    <div class="close-icon" aria-label="Close" data-dismiss="modal" ><img src="images/close-icon.png" alt=""></div>
+                    <!-- <div class="left-img"><img src="images/login-leftImg.png" alt=""></div> -->
+                    <div class="right-info">
+                        <h1>Login</h1>
+                        <div class="sosal-midiyaLogin">
+                            <div class="facebook-link">
+
+                                <a style="cursor: pointer;" class="fb-login-btn"><span class="icon icon-facebook"></span>Sign in with Facebook</a>
+                            </div>
+                            <div class="google-link">
+                                <a href="#"><span class="icon icon-google-plus"></span>Sign in with Google+</a>
+                            </div>
+                        </div>
+                        <div class="or-text"><span>OR</span></div>
+                        <form ng-submit="dologin(this)">
+                            <div class="input-form">
+                                <div class="input-box">
+                                    <div class="icon icon-user"></div>
+                                    <input type="email" required name="email" ng-model="userData.email" placeholder="Email ID">
+                                </div>
+                                <div class="input-box">
+                                    <div class="icon icon-lock"></div>
+                                    <input type="password" required name="password" ng-model="userData.password" placeholder="Password">
+                                </div>
+                                <div class="check-slide">
+                                    <div class="check">
+                                        <label class="label_check" for="checkbox-02"><input type="checkbox" name="sample-checkbox-01" id="checkbox-02" value="1" checked="">Remember me</label>
+                                        
+                                    </div>
+                                    <a href="#">Forgot password ?</a>
+                                </div>
+                                <div class="submit-slide">
+                                    <input type="submit" value="Login" class="btn">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="signUp-link">Haven’t signed up yet? <a href="javascript:void(0);">Sign Up</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Register Popup Model -->
+        <div class="modal modal-vcenter fade" id="registrationModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog registration-popup" role="document">
+                <form ng-submit="doregister(this)">    
+                    <div class="modal-content">
+                        <div class="close-icon" aria-label="Close" data-dismiss="modal" ><img src="images/close-icon.png" alt=""></div>
+                        <h1>New Member Registration</h1>
+                        <div class="registration-form">
+                            <div class="info">
+                                <h2>Why to sign up</h2>
+                                <ul>
+                                    <li>Exclusive discounts for all bookings</li>
+                                    <li>Full access all discounted prices</li>
+                                    <li>Dedicated wed-ordinator for your event</li>
+                                    <li>Custom event planner for your event</li>
+                                </ul>
+                            </div>
+                            <div class="form-filde">
+                                <div class="input-box">
+                                    <input type="email" required name="email" ng-model="userData.email" placeholder="Email ID">
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" required name="first_name" ng-model="userData.first_name" placeholder="Name">
+                                </div>
+                                <div class="input-box">
+                                    <input type="password" required name="password" ng-model="userData.password" placeholder="Password">
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" required name="phone" ng-model="userData.phone" placeholder="Phone">
+                                </div>
+                                <div class="captcha-box">
+                                    <input type="text" placeholder="Enter Captcha">
+                                    <div class="captcha-img"><img src="images/capcha-img.png" alt=""></div>
+                                </div>
+                                <div class="note">Can’t Read ?<a href="#">Refresh</a></div>
+                                <div class="check-slide">
+                                    <label class="label_check" for="checkbox-03"><input type="checkbox" name="sample-checkbox-01" id="checkbox-03" value="1" checked="">By signing up, I agree to Green-n-Personal terms of services</label>
+                                </div>
+                                <div class="submit-slide">
+                                    <input type="submit" value="Register" class="btn">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
